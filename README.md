@@ -76,6 +76,8 @@ JDK配置，如果系统默认安装了JDK1.7那么请忽略此步骤，否则�
   * [HDFS Sink](#sink-hdfs)
   * [Redis Sink(push)](#sink-redis)
   * [Syslog Sink](#sink-Syslog)
+* [拦截器](#interceptor)
+  * [Regex Filtering](#interceptor-regexfiltering)
 * [桥接](#source-sink)
   * [Avro Source 2 Avro Sink](#avro-avro)
   
@@ -575,6 +577,22 @@ SyslogSink 采集输入配置。
 	agent.sinks.k.instance = tcp
 	agent.sinks.k.serverity =  3
 
+#### <a name="interceptor"></a>拦截器
+
+拦截器可以作用在source或者sink上，用于对数据进行拦截处理。
+
+##### <a name="interceptor-regexfiltering"></a>Regex Filtering
+
+正则拦截器通过正则表达式进行数据过滤，支持匹配有效和匹配无效两种方式，对于复杂的字符串也支持通过特殊字符分段后再进行正则匹配。
+
+
+| 属性名  		| 默认值  | 描述 |
+|:------------|:---------------	|:-------------|
+| type  	| com.cmos.bomc.dataflowkit.</br>cmcconline.flume.interceptor.</br>RegexSplitFilteringInterceptor$Builder   |            |
+| regex | \[0\|2]  	|            正则表达式,例如匹配0或者2 |
+|excludeEvents  	| true/false   |           false的时候符合正则的数据将被处理，true的时候符合正则的数据将被丢弃|
+|split  	|\\\\\|   |          数据分割符,例如竖线分割
+|split_format  	| ${19}   |           分割后的字段，如果定义了这个属性，那么正则将匹配这个字段的值，例如分割后的第19个字段，注意第一个字段的序号是0|
 
 #### <a name="source－sink"></a>桥接
 
