@@ -256,9 +256,9 @@ JDK配置，如果系统默认安装了JDK1.7那么请忽略此步骤，否则�
 | bufferMaxLineLength | 8192   	|            单行最大长度，超过这个长度的数据忽略 |
 | fileHeader 		| false       |            是否在消息头中自动添加文件路径 |
 | deletePolicy	| never		| 读取完毕后的文件删除策略，never修改扩展名，immediate删除|
-| targetPattern	| file-*(\\d+).dat			| 采集目标文件名匹配，只采集匹配的文件
+| targetPattern	| file-*(\\\\d+).dat			| 采集目标文件名匹配，只采集匹配的文件
 | ignorePattern	| ^$			| 忽略的文件名
-| deserializer.multiline	| ^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}			| 多行文件合并一行，定义行开始正则表达式，例如以“2016-05-19 14:55:43,593”开始字符判断是一行的开始
+| deserializer.multiline	| ^\\\\d{4}-\\\\d{2}-\\\\d{2} \\\\d{2}:\\\\d{2}:\\\\d{2},\\\\d{3}			| 多行文件合并一行，定义行开始正则表达式，例如以“2016-05-19 14:55:43,593”开始字符判断是一行的开始
 | deserializer.lineEndWith		| \\\\n |         当文件不是采用\n进行换行，而是使用“\n”字符标识换行时需要增加此选项| 
 
 示例:
